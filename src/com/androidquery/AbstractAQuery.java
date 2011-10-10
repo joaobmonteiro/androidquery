@@ -19,11 +19,13 @@ package com.androidquery;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
 import java.nio.channels.FileChannel;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
@@ -1792,6 +1794,33 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 			view.performLongClick();
 		}
 		return self();
+	}
+	
+	
+	private static WeakReference<Dialog> diaRef;
+	
+	public T show(Dialog dialog){
+		
+		dismiss();
+		
+		diaRef = new WeakReference<Dialog>(dialog);
+		dialog.show();
+		
+		return self();
+	}
+	
+	public T dismiss(){
+		
+		if(diaRef != null){
+			Dialog d = diaRef.get();
+			if(d != null && d.isShowing()){
+				d.dismiss();
+			}
+			diaRef = null;
+		}
+		
+		return self();
+		
 	}
 	
 }

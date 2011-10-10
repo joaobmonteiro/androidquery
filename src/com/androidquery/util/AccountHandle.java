@@ -133,7 +133,9 @@ public class AccountHandle extends AsyncTask<String, String, Bundle> implements 
 	        }
 	        builder.setItems(names, this);
 	        builder.setOnCancelListener(this);
-	        builder.create().show();
+	        
+	        AlertDialog dialog = builder.create();//.show();
+	        new AQuery(act).show(dialog);
         }
 	}
 	

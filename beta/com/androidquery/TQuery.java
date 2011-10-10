@@ -36,46 +36,7 @@ public class TQuery extends AbstractAQuery<TQuery>{
 		super(view);
 	}
 	
-	private static WeakReference<Dialog> diaRef;
-	
-	public void showDialog(Dialog dialog){
-		
-		dismissDialogs();
-		
-		diaRef = new WeakReference<Dialog>(dialog);
-		dialog.show();
-	}
-	
-	
-	
-	public void dismissDialogs(){
-		
-		if(diaRef != null){
-			Dialog d = diaRef.get();
-			if(d != null && d.isShowing()){
-				d.dismiss();
-			}
-			diaRef = null;
-		}
-		
-		
-		/*
-		Window win = act.getWindow();
-		
-		AQUtility.debug("window", act.getWindow());
-		WindowManager wm = act.getWindowManager();
-		
-		
-		View view = win.findViewById(android.R.id.message);
-		AQUtility.debug("dia view", view);
-		
-		View code = win.findViewById(R.id.code);
-		AQUtility.debug("code view", code);
-		
-		View code2 = id(R.id.code).getView();
-		AQUtility.debug("code2 view", code2);
-		*/
-	}
+
 	
 	
 }

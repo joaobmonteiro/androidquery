@@ -105,8 +105,7 @@ public class ServiceActivity extends RunSourceActivity {
 	@Override
 	public void onDestroy(){
 		
-		TQuery tq = new TQuery(this);
-		tq.dismissDialogs();
+		aq.dismiss();
 		
 		super.onDestroy();
 	}

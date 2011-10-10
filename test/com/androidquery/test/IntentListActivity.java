@@ -59,9 +59,9 @@ public class IntentListActivity extends ListActivity {
 		}
 
 		
-		if(isTaskRoot() && TestUtility.isTestDevice(this)){			
+		if(isTaskRoot()){			
 			MarketService ms = new MarketService(this);
-			ms.expire(1).checkVersion();
+			ms.checkVersion();
 		}
 		
 	}
@@ -215,6 +215,14 @@ public class IntentListActivity extends ListActivity {
     		return false;
     	}
     }
+    
+	@Override
+	public void onDestroy(){
+		
+		aq.dismiss();
+		
+		super.onDestroy();
+	}
 	
 	
 	

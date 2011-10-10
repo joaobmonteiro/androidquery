@@ -264,5 +264,11 @@ public class AjaxAuthActivity extends RunSourceActivity {
 		
 	}
 
-	
+	@Override
+	public void onDestroy(){
+		
+		aq.dismiss();
+		
+		super.onDestroy();
+	}
 }
